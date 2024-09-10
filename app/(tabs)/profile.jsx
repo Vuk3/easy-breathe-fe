@@ -16,9 +16,8 @@ const ProfileScreen = () => {
   const [isEditModalSettingsVisible, setEditModalSettingsVisible] = useState(false);
 
 
-
-  const [firstName, setFirstName] = useState(user.name);
-  const [lastName, setLastName] = useState(user.name);
+  const [firstName, setFirstName] = useState(user.firstName);
+  const [lastName, setLastName] = useState(user.lastName);
   const [userName, setUserName] = useState(user.username);
 
   const [tempFirstName, setTempFirstName] = useState(user.firstName);
@@ -30,7 +29,6 @@ const ProfileScreen = () => {
   const [tempFrequency, setTempFrequency] = useState(user.notificationFrequency);
   const [tempRadius, setTempRadius] = useState(user.radius);
 
-  console.log('rwerwerwerwe', user.allergens);
   const [allergens, setAllergens] = useState(user.allergens)
   const [selectedAllergens, setSelectedAllergens] = useState(user.allergens);
 
@@ -65,7 +63,9 @@ const ProfileScreen = () => {
     setLastName(tempLastName);
 
     const updatedUser = {
-      name: tempFirstName, // Ažuriraj firstName
+      // name: tempFirstName, // Ažuriraj firstName
+      firstName: tempFirstName,
+      lastName: tempLastName
       // lastName: tempLastName, // Ažuriraj lastName
     };
 
@@ -103,11 +103,9 @@ const ProfileScreen = () => {
   };
 
   useEffect(() => {
-    console.log('weqewqweweqewq')
-
     getAllergens().then((res) => {
       const options = res.map((allergen) => {
-        return { item: allergen.name, id: allergen._id }
+        return { item: allergen.name, id: allergen.id }
       })
       setAllergens(options)
     });
