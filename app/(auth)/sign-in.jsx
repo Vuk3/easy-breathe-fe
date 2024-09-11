@@ -32,6 +32,7 @@ const SignIn = () => {
       // const result = await getCurrentUser();
       await storeToken(result.accessToken);
       const user = await getMe(result.accessToken);
+      console.log('user je', user)
       setUser(user);
       setIsLogged(true);
 
