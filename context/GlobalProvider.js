@@ -13,6 +13,7 @@ const GlobalProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const [koordinate, setKoordinate] = useState(null);
   useEffect(() => {
     getCurrentUser()
       .then((res) => {
@@ -44,6 +45,8 @@ const GlobalProvider = ({ children }) => {
         user,
         setUser,
         loading,
+        koordinate,
+        setKoordinate
       }}
     >
       {children}

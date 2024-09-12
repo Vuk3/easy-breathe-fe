@@ -123,24 +123,28 @@ const ProfileScreen = () => {
             <Text className="text-white text-2xl font-bold">Dobrodošli, {userName}!</Text>
             <Image
               source={icons.profile}
-              className="h-[30px] w-[30px]"
+              className="h-[40px] w-[40px]"
             />
           </View>
           {/* Osnovne informacije */}
-          <View className="w-full bg-white p-4 rounded-lg shadow-md mb-4">
-            <Text className="text-lg font-bold mb-2">Osnovne informacije</Text>
+          <View className="w-full bg-white p-4 rounded-lg shadow-md mb-4 flex-row justify-between">
+            <View>
+              <Text className="text-lg font-bold mb-2">Osnovne informacije</Text>
 
-            <View className="flex-row justify-between items-center mb-2">
-              <Text className="text-base">Ime: {firstName}</Text>
+              <View className="flex-row justify-between items-center mb-2">
+                <Text className="text-base">Ime: {firstName}</Text>
+              </View>
+              <View className="flex-row justify-between items-center mb-2">
+                <Text className="text-base">Prezime: {lastName}</Text>
+              </View>
             </View>
-            <View className="flex-row justify-between items-center mb-2">
-              <Text className="text-base">Prezime: {lastName}</Text>
-            </View>
+
             <View className="flex-row justify-end">
               <TouchableOpacity onPress={openEditModal}>
                 {/* <Ionicons name="md-pencil" size={24} color="black" /> */}
                 <Image
-                  source={icons.eye}
+                  source={icons.edit}
+                  className="h-[40px] w-[40px]"
                 />
               </TouchableOpacity>
             </View>
@@ -199,20 +203,25 @@ const ProfileScreen = () => {
 
 
 
-          <View className="w-full bg-white p-4 rounded-lg shadow-md mb-4">
-            <Text className="text-lg font-bold mb-2">Podešavanja</Text>
+          <View className="w-full bg-white p-4 rounded-lg shadow-md mb-4 flex-row justify-between">
 
-            <View className="flex-row justify-between items-center mb-2">
-              <Text className="text-base mb-2">Frekvencija provere (u satima): {frequency}</Text>
+            <View>
+              <Text className="text-lg font-bold mb-2">Podešavanja</Text>
+
+              <View className="flex-row justify-between items-center mb-2">
+                <Text className="text-base mb-2">Frekvencija provere (u satima): {frequency}</Text>
+              </View>
+              <View className="flex-row justify-between items-center mb-2">
+                <Text className="text-base mb-2">Radijus pretrage (u km): {radius}</Text>
+              </View>
             </View>
-            <View className="flex-row justify-between items-center mb-2">
-              <Text className="text-base mb-2">Radijus pretrage (u km): {radius}</Text>
-            </View>
+
             <View className="flex-row justify-end">
               <TouchableOpacity onPress={openEditModalSettings}>
                 {/* <Ionicons name="md-pencil" size={24} color="black" /> */}
                 <Image
-                  source={icons.eye}
+                  source={icons.edit}
+                  className="h-[40px] w-[40px]"
                 />
               </TouchableOpacity>
             </View>

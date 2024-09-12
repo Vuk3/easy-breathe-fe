@@ -10,6 +10,7 @@ import rightArrow from "../assets/icons/right-arrow.png";
 import logout from "../assets/icons/logout.png";
 import eyeHide from "../assets/icons/eye-hide.png";
 import eye from "../assets/icons/eye.png";
+import edit from "../assets/icons/edit.png";
 import play from "../assets/icons/play.png";
 
 export default {
@@ -26,4 +27,5 @@ export default {
   logout,
   eyeHide,
   eye,
+  edit,
 };

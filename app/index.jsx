@@ -2,14 +2,50 @@ import { StatusBar } from 'expo-status-bar';
 import { ScrollView, Text, View, Image } from 'react-native';
 import { Redirect, router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import * as Location from 'expo-location';
 
 import { images } from '../constants'
 import CustomButton from '../components/CustomButton';
 import { useGlobalContext } from '../context/GlobalProvider';
+import { useEffect } from 'react';
+import { sendLocationToBackend } from '../lib/api';
 
 export default function App() {
   const { isLoading, isLogged } = useGlobalContext();
   if (!isLoading && isLogged) return <Redirect href="/home" />
+  const { koordinate, setKoordinate } = useGlobalContext();
+
+
+  const getUserLocation = async () => {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+
+    if (status !== 'granted') {
+      Alert.alert('Dozvole', 'Dozvola za lokaciju nije odobrena');
+      setIsLoading(false);
+      return;
+    }
+
+    let location = await Location.getCurrentPositionAsync({});
+    console.log(location)
+
+    const { latitude, longitude } = location.coords;
+    const coordinatee = { latitude, longitude };
+
+    setKoordinate(coordinatee);
+  };
+
+  useEffect(() => {
+    getUserLocation();
+  }, []);
+
+  useEffect(() => {
+    if (koordinate) {
+      console.log(koordinate)
+      console.log('djokica');
+    }
+
+  }, [koordinate]);
+
 
   return (
     <SafeAreaView className="bg-primary h-full">
